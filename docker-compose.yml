@@ -9,11 +9,9 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-  nginx-cf-tunnel:
-    container_name: nginx-cf-tunnel
+  cloudflare-tunnel:
+    container_name: cloudflare-tunnel
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --token ${NGINX_CF_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     restart: unless-stopped
     network_mode: host
-    profiles:
-      - cloudflare
